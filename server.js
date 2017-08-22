@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 var port = 3000;
 
 app.get('/incidents', function(req, res) {
-  console.log('POST sighting');
+  console.log('GET sighting');
 });
 
 app.post('/incidents', function(req, res) {
