@@ -2,8 +2,6 @@
 
 ## SETUP
 
-Follow these steps using pgAdmin.
-
 Copy the contents of [./schema.sql](https://github.com/kendagriff/massive-demo/blob/master/schema.sql), paste it into a script (using SQL Tabs), and execute it.
 
 ## Mini Project
@@ -50,18 +48,17 @@ var massive = require('massive')
 In `server.js` [add code to connect](https://github.com/robconery/massive-js#express-example) to your database:
 
 ```javascript
-var conn = massive.connectSync({
-  connectionString : "postgres://massive:password@localhost/your-database-name"
+massive({
+  host: 'ec2-23-21-197-231.compute-1.amazonaws.com',
+  port: 5432,
+  database: 'd3end9n7irlc8n',
+  user: 'ldmvvsyrzvqvax',
+  password: 'd3b46f0d5dfbc5d98e53ed6eda29d1076096facb6c5e9ded5ec7b815faed7b64',
+  ssl: true
+}).then(function(db) {
+  app.set('db', db);
 });
 ```
-
-Connect your massive instance to a `db` key:
-
-```javascript
-app.set('db', conn);
-```
-
-Use `console.log` to test that you're properly connected to Postgres. Remove it when you're confident it works.
 
 ### Step 9: Create a SQL Repository
 
@@ -69,7 +66,7 @@ massive-js works by converting your SQL queries, held in files, into JS function
 
 For example, the following file, held in the `./db` directory of your project:
 
-`db/get_all_injuries.sql`
+`db/getAllInjuries.sql`
 ```sql
 SELECT * FROM injuries;
 ```
@@ -77,12 +74,12 @@ SELECT * FROM injuries;
 Yields the following function:
 
 ```js
-app.get("db").get_all_injuries(function(err, injuries) {
+app.get("db").getAllInjuries().then(function(injuries) {
   console.log(injuries) // injuries will contain an array of injuries
 });
 ```
 
-Create the `./db` directory, and add a file, `get_all_incidents.sql` (incidents, not injuries).
+Create the `./db` directory, and add a file, `getAllIncidents.sql` (incidents, not injuries).
 
 ### Step 10: Query Incidents
 
@@ -94,12 +91,6 @@ Now that you have a repository for SQL queries, add a query to your new file tha
 * `affected_areas.name`
 * `causes.name`
 
-Your query will require more than one join in a single statement (whoa!). When you're query is ready, test it in psql:
-
-```
-psql massive_demo < db/get_all_incidents.sql
-```
-
 ### Step 11: Upgrade the GET Endpoint
 
 Now that you have a way to return basic information about incidents of injuries, upgrade the GET endpoint such that an HTTP request can return the information to a client (like Angular) in your response:
@@ -107,7 +98,7 @@ Now that you have a way to return basic information about incidents of injuries,
 Hint:
 
 ```js
-app.get("db").get_all_injuries(function(err, injuries) {
+app.get("db").getAllInjuries().then(function(injuries) {
   console.log(injuries) // injuries will contain an array of injuries
 });
 ```
@@ -130,7 +121,7 @@ where in_stock = $1 and price < $2;
 Your arguments can be submitted as an array as the first argument in the function, before the callback.
 
 ```js
-app.get("db").products_in_stock([true, 1000], function(err, products) {
+app.get("db").productsInStock([true, 1000]).then(function(products) {
   // products is a results array
 });
 ```
