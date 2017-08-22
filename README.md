@@ -61,12 +61,6 @@ Connect your massive instance to a `db` key:
 app.set('db', conn);
 ```
 
-Set a var `db` to the value of the key:
-
-```javascript
-var db = app.get('db');
-```
-
 Use `console.log` to test that you're properly connected to Postgres. Remove it when you're confident it works.
 
 ### Step 9: Create a SQL Repository
@@ -83,7 +77,7 @@ SELECT * FROM injuries;
 Yields the following function:
 
 ```js
-db.get_all_injuries(function(err, injuries) {
+app.get("db").get_all_injuries(function(err, injuries) {
   console.log(injuries) // injuries will contain an array of injuries
 });
 ```
@@ -113,7 +107,7 @@ Now that you have a way to return basic information about incidents of injuries,
 Hint:
 
 ```js
-db.get_all_injuries(function(err, injuries) {
+app.get("db").get_all_injuries(function(err, injuries) {
   console.log(injuries) // injuries will contain an array of injuries
 });
 ```
@@ -136,7 +130,7 @@ where in_stock = $1 and price < $2;
 Your arguments can be submitted as an array as the first argument in the function, before the callback.
 
 ```js
-db.products_in_stock([true, 1000], function(err, products) {
+app.get("db").products_in_stock([true, 1000], function(err, products) {
   // products is a results array
 });
 ```
