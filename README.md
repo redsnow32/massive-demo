@@ -1,16 +1,10 @@
 # [massive-js](https://massive-js.readthedocs.io/en/latest/)
 
-## PRE-SETUP
+## SETUP
 
 Follow these steps using pgAdmin.
 
-### Step A: Create a database
-
-Create a database called `massive_demo`: [View demo](https://www.youtube.com/watch?v=RT6VXSDj6Wg&feature=youtu.be). 
-
-### Step B: Bootstrap and test your database
- 
-Copy the contents of [./schema.sql](https://github.com/kendagriff/massive-demo/blob/master/schema.sql), paste it into a script (using pgAdmin), and execute it: [View demo](https://www.youtube.com/watch?v=q8QLp-ZHg_o&feature=youtu.be).
+Copy the contents of [./schema.sql](https://github.com/kendagriff/massive-demo/blob/master/schema.sql), paste it into a script (using SQL Tabs), and execute it.
 
 ## Mini Project
 
@@ -24,13 +18,7 @@ Clone the repo (do not fork it).
 npm install
 ```
 
-### Step 3: Install massive-js
-
-```
-npm install --save massive
-```
-
-### Step 4: Test it
+### Step 3: Test it
 
 Start your application by running:
 
