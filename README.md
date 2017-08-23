@@ -128,7 +128,7 @@ app.get("db").productsInStock([true, 1000]).then(function(products) {
 
 ### Step 13 (Optional): Up the Ante (Again)
 
-Upgrade your GET request to accept not only `by=cause`, but `by=affected_area`, without breaking your previous functionality.
+Upgrade your GET request to accept `by=cause` and `by=affected_area`, with a `value=Sneezing` or `value=Neck`.
 
 ### Step 14: Create a New Incident
 
