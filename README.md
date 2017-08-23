@@ -105,7 +105,7 @@ app.get("db").getAllInjuries().then(function(injuries) {
 
 ### Step 12: Up the Ante
 
-If you've made it this far, great work. Now, upgrade your endpoint again, this time accepting a new query parameter, `cause=Sneezing` (e.g. any cause). When `cause=Sneezing` is submitted as part of the same GET request, return the results of a _different_ query, `db/get_incidents_by_cause.sql`.
+If you've made it this far, great work. Now, upgrade your endpoint again, this time accepting a new query parameter, `cause=Sneezing` (e.g. any cause). When `cause=Sneezing` is submitted as part of the same GET request, return the results of a _different_ query, `db/getIncidentsByCause.sql`.
 
 Make sure the original query works as before.
 
